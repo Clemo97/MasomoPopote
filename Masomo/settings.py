@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
     'app',
     'students',
     'tutors',
@@ -57,7 +63,16 @@ ROOT_URLCONF = 'Masomo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'app', 
+                 'templates/app'),
+            os.path.join(BASE_DIR, 'students', 
+                 'templates/students'),
+            os.path.join(BASE_DIR, 'tutors', 
+                 'templates/tutors'),
+
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -116,9 +131,28 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+
+cloudinary.config( 
+  cloud_name = "dyiuol5sx", 
+  api_key = "226889347825597", 
+  api_secret = "gq5g9UhQzFd36mDRLqcOoIeEoOY" 
+)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : "dyiuol5sx",
+    'API_KEY' : "226889347825597",
+    'API_SECRET' : "gq5g9UhQzFd36mDRLqcOoIeEoOY",
+}
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = 'app/static/'
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'app/static'),
+)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
