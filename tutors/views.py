@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def tutor(request):
+    return render(request, 'tutors/tutor.html')
+
