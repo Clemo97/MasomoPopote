@@ -10,7 +10,7 @@ class User(AbstractUser):
     email=models.EmailField()
 
 class Tutor(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
+    user = models.OneToOneField(User, related_name='tutor', on_delete = models.CASCADE, primary_key = True)
     # contact = models.IntegerField()
 
 # class CourseCategory(models.Model):
@@ -26,6 +26,10 @@ class Course(models.Model):
     category = models.CharField(max_length=100)
 
 
+
+class Student(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True) 
+    courseInterest = models.TextField() 
 
 class test(models.Model):
     course = models.ForeignKey(Course, on_delete = models.CASCADE)
