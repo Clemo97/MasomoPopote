@@ -16,14 +16,7 @@ def tutor(request):
 
 #     return render(request, 'tutors/register.html')
 
-class studentReg(CreateView):
-    model = User
-    form_class = StudentRegisterForm
-    template_name = 'tutors/student.html'
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('student')
+
 
 class TutorReg(CreateView):
     model = User
