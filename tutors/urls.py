@@ -10,6 +10,6 @@ from tutors.views import TutorReg
 urlpatterns = [
     path('tut/', views.tutor, name='tutor'),
     path('register-tutor/', TutorReg.as_view(), name='tutor-reg'),
-    path('login-tutor/', auth_views.LoginView.as_view(template_name='tutors/login.html'), name='login'),
+    path('login-tutor/', views.loginTutor, name='login'),
     path('logout-tutor/', auth_views.LogoutView.as_view(), name='logout'),
 ]
