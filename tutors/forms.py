@@ -11,7 +11,7 @@ class TutorRegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
-    contact = forms.IntegerField(required=True)
+    # contact = forms.IntegerField(required=True)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -25,7 +25,7 @@ class TutorRegisterForm(UserCreationForm):
         user.email = self.cleaned_data.get('email')
         user.save()
         tutor = Tutor.objects.create(user=user)
-        tutor.contact = self.cleaned_data.get('contact')
+        # tutor.contact = self.cleaned_data.get('contact')
         tutor.save()
         return user
 

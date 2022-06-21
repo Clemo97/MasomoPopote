@@ -12,9 +12,9 @@ def tutor(request):
     return render(request, 'tutors/tutor.html')
 
 
-def register(request):
+# def register(request):
 
-    return render(request, 'tutors/register.html')
+#     return render(request, 'tutors/register.html')
 
 class studentReg(CreateView):
     model = User
@@ -28,7 +28,7 @@ class studentReg(CreateView):
 class TutorReg(CreateView):
     model = User
     form_class = TutorRegisterForm
-    template_name = 'tutors/registration.html'
+    template_name = 'tutors/register.html'
 
     def form_valid(self, form):
         user = form.save()

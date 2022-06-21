@@ -11,7 +11,7 @@ class User(AbstractUser):
 
 class Tutor(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
-    contact = models.IntegerField()
+    # contact = models.IntegerField()
 
 # class CourseCategory(models.Model):
 #     title=models.CharField(max_length=100)
