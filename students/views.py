@@ -13,8 +13,8 @@ def students(request):
 class studentReg(CreateView):
     model = User
     form_class = StudentRegisterForm
-    template_name = 'tutors/student.html'
+    template_name = 'tutors/register.html'
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('student')
+        return redirect('login')
