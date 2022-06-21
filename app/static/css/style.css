@@ -1,9 +1,9 @@
 .hero{
-    background-image: url(/app/static/assets/hero.svg);  
-    background-size: cover;
-    background-position: center;
+    background-image: url(/app/static/assets/hero.png);  
+    /* background-size: cover; */
+    /* background-position: center; */
     background-repeat: no-repeat;
-    height: 91vh;
+    height: 750px;
     /* position: absolute;
     width: 984px;
     height: 553px;
@@ -11,6 +11,27 @@
     top: 150px; */
 
 }
+.abtText{
+    margin-top: 3em
+}
+.abtParagraph{
+    line-height: 35px;
+}
+
+.aboutImg{
+    background-image: url(/app/static/assets/aboutUs.svg);  
+    background-repeat: no-repeat;
+    width: 807px;
+    height: 704px;
+    margin-top: -5em;
+}
+
+
+
+
+
+
+
 /* CSS */
 .button-1 {
   background-color: #5E5CC0;
