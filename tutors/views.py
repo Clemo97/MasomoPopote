@@ -34,3 +34,5 @@ class TutorReg(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('tutor')
+
+
