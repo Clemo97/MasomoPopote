@@ -27,7 +27,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="font-weight: bold;">MASOMO <span style="color: #5E5CC0;">POPOTE</span></a>
+      <a class="navbar-brand" href="{% url 'home' %}" style="font-weight: bold;">MASOMO <span style="color: #5E5CC0;">POPOTE</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,13 +39,13 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">HOME</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ABOUT US</a>
+              <a class="nav-link" href="#about">ABOUT US</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">PROGRAMS</a>
+                <a class="nav-link" href="#programs">PROGRAMS</a>
               </li> <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">ADMISSIONS</a>
               </li> <li class="nav-item">
@@ -97,12 +97,20 @@
     </div>
 
 <!--ABOUT-->
-
+<div class="container" id="about">
+    <h1 class="text-center">
+        ABOUT US
+    </h1>
+</div>
 
 
 <!--PROGRAMS-->
 
-
+<div class="container" id="programs">
+    <h1 class="text-center">
+        OUR PROGRAMS
+    </h1>
+</div>
 
 
 <!--FOOTER-->
