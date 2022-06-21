@@ -1,4 +1,3 @@
-from cmath import log
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -26,7 +25,7 @@ class TutorReg(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('tutor')
+        return redirect('tutor-login')
 
 
 def loginTutor(request):

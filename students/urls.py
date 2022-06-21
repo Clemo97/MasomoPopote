@@ -11,7 +11,7 @@ from students.views import studentReg
 urlpatterns = [
     path ('dashboard/', views.students, name='students'),
     path('register/', studentReg.as_view(), name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='students/login.html'), name='login'),
+    path('login/', views.loginStudent, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 ]

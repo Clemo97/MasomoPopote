@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
-
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 from tutors.models import Student
 from . models import *
@@ -19,3 +20,21 @@ class studentReg(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('login')
+
+
+def loginStudent(request):
+    if request.method=='POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None :
+                login(request,user)
+                return redirect('students')
+            else:
+                messages.error(request,"Invalid username or password")
+        else:
+                messages.error(request,"Invalid username or password")
+    return render(request, 'students/login.html',
+    context={'form':AuthenticationForm()})
