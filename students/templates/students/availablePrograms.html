@@ -71,48 +71,23 @@
 </nav>
 <section class="home">
     <h3 class="text">My Dashboard</h3>
-    <div class="intro">
-        <div class="card new">
-            <h4 class="text-muted">Available tests:</h4>
-            {% for test in tests %}
-            <div class="card tests">
-                <h4 style="color: #5E5CC0;">{{test.title}}</h4>
-                <small>Deadline 22/08/2022</small>
-                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
-            </div>
-            {% endfor %}
-        </div>
-        <!--NEWS-->
-        <div class="what">
-            <h4 class="text-muted">What's new:</h4>
-            {% for activeCourse in activeCourses %}
-            <div class="card headline">
-                <h4 class="">{{activeCourse.title}}</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
-            {% endfor %}
-                <div class="card headline">
-                <h4 class="">Headline 2</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
-            <div class="card headline">
-                <h4 class="">Headline 3</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
-        </div>
-    </div>
+    
     <div class="card courses">
-        <h4 class="text-muted">My Courses:</h4>
-        {% for activeCourse in activeCourses %}
+        <h4 class="text-muted">Available Courses:</h4>
+        {% for course in courses %}
         <div class="card angular">
-            <h5 class="text-muted">{{activeCourse.course.category}}</h5>
-            <img src="{{activeCourse.course.coursePoster.url}}" alt="" style="height:230px">
-            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
+            <h5 class="text-muted">{{course.category}}</h5>
+            <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
             <p style="width: 80%; margin:auto;" class="text-muted">
                 <span>5/5 lessons</span>
-                <span style="float: right;">100%</span>
+                <span style="float: right;">ENROLL</span>
+                <form method="POST" action="{% url 'enroll'  %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">Enroll</button>
+                </form>
             </p>
         </div>
+        
         {% endfor %}
         
        
