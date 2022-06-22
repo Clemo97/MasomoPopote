@@ -19,8 +19,8 @@ def students(request):
     courses = Course.objects.all()
     tests = test.objects.all()
     currentUser = request.user.student
-    activeCourses = Course.objects.filter(studentprofile=currentUser.pk).all()
-    
+    activeCourses = EnrolledCourse.objects.filter(student_id=currentUser.pk).all()
+
 
     return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests, 'activeCourses':activeCourses})
 
