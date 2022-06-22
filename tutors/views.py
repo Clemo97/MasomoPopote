@@ -15,11 +15,6 @@ def tutor(request):
     return render(request, 'tutors/tutor.html')
 
 
-# def register(request):
-
-#     return render(request, 'tutors/register.html')
-
-
 
 class TutorReg(CreateView):
     model = User
