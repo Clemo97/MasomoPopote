@@ -51,7 +51,13 @@ class StudentProfile(models.Model):
         return f'{self.user}profile'
 
 
+class EnrolledCourse(models.Model):
+    student = models.ForeignKey(Student, on_delete = models.CASCADE, null=True, related_name='enrolledStudent')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, related_name='courseEnroll')
 
+    def get_absolute_url(self):
+            return reverse('dashboard')
+            
 
 class test(models.Model):
     course = models.ForeignKey(Course, on_delete = models.CASCADE)

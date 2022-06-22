@@ -12,7 +12,7 @@ from . models import *
 from . forms import *
 
 
-from tutors.models import User, Student, Course, test
+from tutors.models import EnrolledCourse, User, Student, Course, test
 
 
 def students(request):
@@ -20,6 +20,7 @@ def students(request):
     tests = test.objects.all()
     currentUser = request.user.student
     activeCourses = Course.objects.filter(studentprofile=currentUser.pk).all()
+    
 
     return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests, 'activeCourses':activeCourses})
 
@@ -53,12 +54,11 @@ def loginStudent(request):
 
 
 class enroll(LoginRequiredMixin, View):
-    def post(self, request, pk, *args, **kwargs):
-        enrolledCourse = Course.objects.get(pk=pk)
-        request.user.profile.enrolledIn = enrolledCourse
-        request.user.profile.save()
+    model = EnrolledCourse
+    def post(self, request, *args, **kwargs):
+        currentUser = request.user.student
+        currentUser.Course.save()
         return redirect('students')
-
 
 class markComplete(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
