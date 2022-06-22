@@ -61,4 +61,7 @@ class markComplete(LoginRequiredMixin, View):
         request.user.profile.enrolledIn.remove(pk=pk)
         request.user.profile.save()
         return redirect('students') 
-         
+
+def availablePrograms(request): 
+    courses = Course.objects.all()
+    return render(request, 'students/availablePrograms.html', {'courses': courses})
