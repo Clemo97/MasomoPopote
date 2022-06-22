@@ -161,6 +161,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'app/static'),
 )
 
+
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+
+
+
 LOGOUT_REDIRECT_URL = 'home'
 
 

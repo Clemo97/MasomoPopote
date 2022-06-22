@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from PIL import Image
 
 
 class User(AbstractUser):
@@ -21,7 +22,7 @@ class Course(models.Model):
     title=models.CharField(max_length=100) 
     descriptions=models.TextField()
     body = models.TextField()
-    course_poster = models.ImageField(upload_to='coursePoster')
+    coursePoster = models.ImageField(upload_to='coursePoster')
     category = models.CharField(max_length=100)
     def __str__(self):
         return self.title
