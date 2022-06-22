@@ -18,13 +18,13 @@
     line-height: 35px;
 }
 
-.aboutImg{
+/* .aboutImg{
     background-image: url(/app/static/assets/aboutUs.svg);  
     background-repeat: no-repeat;
     width: 807px;
     height: 704px;
     margin-top: -5em;
-}
+} */
 
 
 
@@ -93,6 +93,7 @@
 }
 
 body {
+    position: relative;
     height: 100vh;
     background: var(--body-color);
     transition: var(--tran-05);
@@ -312,11 +313,11 @@ body.dark .menu-bar .mode i.moon {
 body.dark .switch::before {
     left: 24px;
 }
-.home {
+section.home {
     position: relative;
-    left: 88px;
+    /* left: 88px; */
     height: 100vh;
-    width: calc(100% - 88px);
+    /* width: calc(100% - 88px); */
     background: var(--body-color);
     transition: var(--tran-05);
 }
@@ -392,4 +393,66 @@ p progress[value].ang {
     padding: 20px 15px;
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(5px);
+}
+
+/* carousel styles */
+
+.img-text {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 5% 5%;
+    color: #fff;
+    border-radius: 15px;
+    padding-top: 40%;
+    font-style: italic;
+}
+.single-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+.img-area {
+    position: absolute;
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
+    top: 5%;
+    left: 25%;
+    
+}
+.img-area img {
+    width: 100%;
+    
+}
+.carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -70px;
+}
+.carousel-indicators li {
+    background: #E14141;
+    border-radius: 50%;
+    width: 17px;
+    height: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.carousel-control-prev, .carousel-control-next {
+    text-decoration: none;
+	width: 30px;
+	height: 30px;
+    background: #666;
+    text-shadow: none;
+	top: -50px;
+    border-radius: 50%;
+}
+.carousel-indicators .active {
+    background: #5E5CC0;
+}
+.carousel-control-prev i, .carousel-control-next i {
+	font-size: 16px;
+}
+.carousel-control-prev {
+	/* left: auto; */
+	right: 40px;
 }
