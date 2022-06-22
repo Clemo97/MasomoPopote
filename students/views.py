@@ -4,13 +4,22 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
-from tutors.models import Student
 from . models import *
 from . forms import *
 
-def students(request):
 
-    return render(request, 'students/dashboard.html')
+from tutors.models import User, Student, Course, test
+
+
+
+
+
+
+def students(request):
+    courses = Course.objects.all()
+    tests = test.objects.all()
+
+    return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests})
 
 class studentReg(CreateView):
     model = User

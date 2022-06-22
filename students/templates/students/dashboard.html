@@ -74,23 +74,13 @@
     <div class="intro">
         <div class="card new">
             <h4 class="text-muted">Available tests:</h4>
+            {% for test in tests %}
             <div class="card tests">
-                <h4 style="color: #5E5CC0;">React Fundamentals</h4>
+                <h4 style="color: #5E5CC0;">{{test.title}}</h4>
                 <small>Deadline 22/08/2022</small>
                 <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
             </div>
-            <div class="card tests">
-                
-                <h4 style="color: #5E5CC0;">React Fundamentals</h4>
-                <small>Deadline 22/08/2022</small>
-                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
-            </div>
-            <div class="card tests">
-                
-                <h4 style="color: #5E5CC0;">React Fundamentals</h4>
-                <small>Deadline 22/08/2022</small>
-                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
-            </div>
+            {% endfor %}
         </div>
         <div class="what">
             <h4 class="text-muted">What's new:</h4>
@@ -109,35 +99,20 @@
         </div>
     </div>
     <div class="card courses">
-        
+        <h4 class="text-muted">My Courses:</h4>
+        {% for course in courses %}
         <div class="card angular">
-            <h4 class="text-muted">My Courses:</h4>
-            <h5 class="text-muted">Angular</h5>
-            <img src="{% static 'assets/angular.png' %}" alt="">
-            <p style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
+            <h5 class="text-muted">{{course.category}}</h5>
+            <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
+            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
             <p style="width: 80%; margin:auto;" class="text-muted">
                 <span>5/5 lessons</span>
                 <span style="float: right;">100%</span>
             </p>
         </div>
-        <div class="card react">
-            <h5 class="text-muted">Angular</h5>
-            <img src="{% static 'assets/react.png' %}" alt="">
-            <p style="width: 100%; margin:auto;"><progress value="0" max="100" class="ang"></progress></p>
-            <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>0/5 lessons</span>
-                <span style="float: right;">100%</span>
-            </p>
-        </div>
-        <div class="card python">
-            <h5 class="text-muted">Angular</h5>
-            <img src="{% static 'assets/python.png' %}" alt="">
-            <p style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
-            <p style="width: 80%; margin:auto;"class="text-muted">
-                <span>5/5 lessons</span>
-                <span style="float: right;">100%</span>
-            </p>
-        </div>
+        {% endfor %}
+        
+       
     </div>
     
 </section>
