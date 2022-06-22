@@ -31,6 +31,9 @@
                 <div class="card-header text-black" style="color:#5E5CC0;">
                   <h2><strong>Welcome Back!</strong></h2>
                 </div>
+                <div class="txt" style="text-align: center; opacity: 0.5; margin-top: 2%;">
+                  <p><small>To keep connected to us please<br>enter your details here to sign up</small></p>
+                </div>
                 <div class="card-body">
                     <form action="{% url 'tutor-login' %}" method="POST" novalidate>
                       {% csrf_token %}
