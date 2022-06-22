@@ -50,8 +50,15 @@ def loginStudent(request):
 
 class enroll(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
-        enrolledCourses = Course.objects.get(pk=pk)
-        request.user.profile.enrolledIn = enrolledCourses
+        enrolledCourse = Course.objects.get(pk=pk)
+        request.user.profile.enrolledIn = enrolledCourse
         request.user.profile.save()
         return redirect('students')
-        
+
+
+class markComplete(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        request.user.profile.enrolledIn.remove(pk=pk)
+        request.user.profile.save()
+        return redirect('students') 
+         
