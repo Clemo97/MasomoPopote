@@ -5,17 +5,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
-<<<<<<< HEAD
 from students.views import studentReg, courseEnroll, markComplete
-=======
-<<<<<<< HEAD
+
 from students.views import studentReg
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-=======
-from students.views import studentReg, enroll, markComplete
->>>>>>> 76d548a5194110ce7b2ab32acc27b6c3e664be84
-
->>>>>>> e7329a5037782822e93898ad4fb8f582cb689023
 
 urlpatterns = [
     path ('dashboard/', views.students, name='students'),
