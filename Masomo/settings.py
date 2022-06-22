@@ -95,8 +95,14 @@ WSGI_APPLICATION = 'Masomo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'masomo',
+        'USER': 'atieno',
+        'PASSWORD': 'mishi',
+        'HOST':'localhost',
+        'PORT':''
     }
 }
 
@@ -154,6 +160,15 @@ STATIC_URL = 'app/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'app/static'),
 )
+
+
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+
+
+
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Default primary key field type
