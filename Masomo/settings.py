@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'tutors.User'
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'django_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
     'app',
@@ -93,8 +95,22 @@ WSGI_APPLICATION = 'Masomo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'masomo',
+        # 'USER': 'atieno',
+        # 'PASSWORD': 'mishi',
+        # 'HOST':'localhost',
+        # 'PORT':''
+        
+        
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'students',
+        'USER': 'moringa',
+        'PASSWORD': 'Access',
+        'HOST':'localhost',
+        'PORT':''
     }
 }
 
@@ -152,6 +168,15 @@ STATIC_URL = 'app/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'app/static'),
 )
+
+
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+
+
+
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Default primary key field type

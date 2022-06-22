@@ -1,1 +1,122 @@
-<h1>Students</h1>
+{% extends 'base.html' %}
+{% load static%}
+{% block styles %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+
+<nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <div class="text header-text">
+                <span class="name">MASOMO <span style="color: #5E5CC0;">POPOTE</span> </span><br>
+            </div>
+        </div>
+        
+        <i class="bx bx-chevron-right toggle"></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <li class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" placeholder="Search...">
+            </li>
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-home-alt icon' ></i>
+                        <span class="text nav-text">HOME</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                        <span class="text nav-text">PROGRAMS</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-notepad icon' ></i>
+                        <span class="text nav-text">TESTS</span>
+                    </a>
+                </li>
+                                
+            </ul>
+        </div>
+        <div class="bottom-content">
+            <li class="">
+                <a href="#">
+                    <i class='bx bx-log-out icon' ></i>
+                    <span class="text nav-text">Log Out</span>
+                </a>
+            </li>
+
+            <li class="mode">
+                <div class="moon-sun">
+                    <i class='bx bx-moon icon moon' ></i>
+                    <i class='bx bx-sun icon sun' ></i>
+                </div>
+                <span class="mode-text text">Dark Mode</span>
+
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>
+<section class="home">
+    <h3 class="text">My Dashboard</h3>
+    <div class="intro">
+        <div class="card new">
+            <h4 class="text-muted">Available tests:</h4>
+            {% for test in tests %}
+            <div class="card tests">
+                <h4 style="color: #5E5CC0;">{{test.title}}</h4>
+                <small>Deadline 22/08/2022</small>
+                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="what">
+            <h4 class="text-muted">What's new:</h4>
+            <div class="card headline">
+                <h4 class="">Headline 1</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
+            </div>
+                <div class="card headline">
+                <h4 class="">Headline 2</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
+            </div>
+            <div class="card headline">
+                <h4 class="">Headline 3</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
+            </div>
+        </div>
+    </div>
+    <div class="card courses">
+        <h4 class="text-muted">My Courses:</h4>
+        {% for course in courses %}
+        <div class="card angular">
+            <h5 class="text-muted">{{course.category}}</h5>
+            <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
+            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
+            <p style="width: 80%; margin:auto;" class="text-muted">
+                <span>5/5 lessons</span>
+                <span style="float: right;">100%</span>
+            </p>
+        </div>
+        {% endfor %}
+        
+       
+    </div>
+    
+</section>
+
+
+
+{% endblock %}
