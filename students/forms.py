@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
-from tutors.models import User, Student
+from tutors.models import User, Student, EnrolledCourse
 
 
 
@@ -27,5 +27,17 @@ class StudentRegisterForm(UserCreationForm):
         student.save()
         return user
         
+# class enrollForm(forms.ModelForm):
+#      class Meta:
+#         model = EnrolledCourse
     
+    # class Meta:
+    #     model = EnrolledCourse
+    # @transaction.atomic
+    # def save(self, *args, **kwargs):
+    #     user = super().save(commit=False)
+    #     user.is_student = True
+    #     user.save()
+    #     return user
+
   

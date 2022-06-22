@@ -98,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'masomo',
+        'NAME': 'masomopopote',
         'USER': 'atieno',
         'PASSWORD': 'mishi',
         'HOST':'localhost',
