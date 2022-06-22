@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.views.generic import View
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -9,10 +11,6 @@ from . forms import *
 
 
 from tutors.models import User, Student, Course, test
-
-
-
-
 
 
 def students(request):
@@ -47,3 +45,13 @@ def loginStudent(request):
                 messages.error(request,"Invalid username or password")
     return render(request, 'students/login.html',
     context={'form':AuthenticationForm()})
+
+
+
+class enroll(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        enrolledCourses = Course.objects.get(pk=pk)
+        request.user.profile.enrolledIn = enrolledCourses
+        request.user.profile.save()
+        return redirect('students')
+        
