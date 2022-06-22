@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
-from students.views import studentReg, enroll, markComplete
+from students.views import studentReg, courseEnroll, markComplete
 
 
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
     path('register/', studentReg.as_view(), name='register'),
     path('login/', views.loginStudent, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('enroll/',enroll.as_view(), name='enroll'),
+    path('enroll/<int:pk>/',courseEnroll.as_view(), name='enroll'),
     path('complete/<int:pk>/', markComplete.as_view(), name='complete'),
     path('programs/', views.availablePrograms, name='programs'),
 

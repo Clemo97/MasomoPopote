@@ -48,7 +48,7 @@ def loginTutor(request):
 
 class addCourse(LoginRequiredMixin, CreateView):
     model = Course
-    fields = ['title', 'descriptions', 'body','category','course_poster']
+    fields = ['title', 'descriptions', 'body','category','coursePoster']
     template_name = 'tutors/newCourse.html'
     def form_valid(self, form):
         form.instance.tutor=self.request.user.tutor

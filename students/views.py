@@ -1,6 +1,7 @@
+from lzma import is_check_supported
 from multiprocessing.dummy import current_process
 from threading import activeCount
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
@@ -19,7 +20,8 @@ def students(request):
     courses = Course.objects.all()
     tests = test.objects.all()
     currentUser = request.user.student
-    activeCourses = EnrolledCourse.objects.filter(student_id=currentUser.pk).all()
+    # activeCourses = get_object_or_404(Course, studentprofile=currentUser.pk)
+    activeCourses = Course.objects.filter(students=currentUser.pk).all()
 
 
     return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests, 'activeCourses':activeCourses})
@@ -53,18 +55,31 @@ def loginStudent(request):
 
 
 
-class enroll(LoginRequiredMixin, View):
-    model = EnrolledCourse
-    def post(self, request, *args, **kwargs):
-        currentUser = request.user.student
-        currentUser.Course.save()
+class courseEnroll(LoginRequiredMixin, View):
+     def post(self, request, pk, *args, **kwargs):
+        course = Course.objects.get(pk=pk)
+        course.students.add(request.user.student)
         return redirect('students')
+
+        # for student in course.students.all():
+        #     if student == request.user.student:
+        #         is_student = True
+        #         course.students.add(request.user.student)
+                # return redirect('students')
 
 class markComplete(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
-        request.user.profile.enrolledIn.remove(pk=pk)
-        request.user.profile.save()
-        return redirect('students') 
+        course = Course.objects.get(pk=pk)
+        is_student = False
+
+
+        for student in course.students.all():
+            if student == request.user.student:
+                is_student = True
+                break
+
+        if not is_student:
+            course.students.remove(request.user.student)
 
 def availablePrograms(request): 
     courses = Course.objects.all()
