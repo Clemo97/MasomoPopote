@@ -17,6 +17,7 @@ class Tutor(models.Model):
     def __str__(self):
             return self.user.first_name
 
+
 class Course(models.Model):
     tutor=models.ForeignKey(Tutor, on_delete=models.CASCADE)
     title=models.CharField(max_length=100) 
@@ -33,11 +34,30 @@ class Course(models.Model):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True) 
-    courseInterest = models.TextField()
+    user = models.OneToOneField(User, on_delete = models.CASCADE, related_name='student',primary_key = True) 
+    # courseInterest = models.TextField()
 
     def __str__(self):
         return self.user.first_name
+
+
+class StudentProfile(models.Model):
+    user = models.ForeignKey(Student, on_delete = models.CASCADE)
+    profileImage = models.ImageField(default='default.png',upload_to='profilePics')
+    enrolledIn = models.ForeignKey(Course, on_delete = models.CASCADE,  null=True)
+    
+
+    def __str__(self):
+        return f'{self.user}profile'
+
+
+class EnrolledCourse(models.Model):
+    student = models.ForeignKey(Student, on_delete = models.CASCADE, null=True, related_name='enrolledStudent')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, related_name='courseEnroll')
+
+    def get_absolute_url(self):
+            return reverse('dashboard')
+            
 
 class test(models.Model):
     course = models.ForeignKey(Course, on_delete = models.CASCADE)
