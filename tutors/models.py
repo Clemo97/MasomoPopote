@@ -34,7 +34,7 @@ class Course(models.Model):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True) 
+    user = models.OneToOneField(User, on_delete = models.CASCADE, related_name='student',primary_key = True) 
     # courseInterest = models.TextField()
 
     def __str__(self):

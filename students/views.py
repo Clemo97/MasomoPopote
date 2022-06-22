@@ -1,3 +1,5 @@
+from multiprocessing.dummy import current_process
+from threading import activeCount
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
@@ -16,8 +18,10 @@ from tutors.models import User, Student, Course, test
 def students(request):
     courses = Course.objects.all()
     tests = test.objects.all()
+    currentUser = request.user.student
+    activeCourses = Course.objects.filter(studentprofile=currentUser.pk).all()
 
-    return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests})
+    return render(request, 'students/dashboard.html', {'courses': courses, 'tests': tests, 'activeCourses':activeCourses})
 
 class studentReg(CreateView):
     model = User
