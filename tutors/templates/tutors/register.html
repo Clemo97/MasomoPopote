@@ -10,14 +10,29 @@
     <title>Demo Registration</title>
 </head>
 <body>
-
+  <a class="navbar-brand" href="{% url 'home' %}" style="font-weight: bold;">MASOMO  <span
+    style="color: #5E5CC0;">POPOTE</span></a>
     <section>
         <div class="container">
           <div class="row">
+            <div class="col-md-5" style="margin-top: 15%;">
+
+              <div class="text">
+                <h2><strong>It's time to do the best <br>work of your life</strong></h2>
+              </div>
+
+              <div class="img">
+                {% load static %} <img src="{% static "tutors/media/tutors.webp" %}" alt="students" style= "width: 80%"; height=50%";/>
+              </div>
+              
+            </div>
             <div class="col-md-6 mx-auto">
               <div class="card">
-                <div class="card-header text-black">
-                  <h2>Tutor</h2>
+                <div class="card-header text-black" style="color:#5E5CC0; text-align: center;">
+                  <h2><strong>Welcome!</strong></h2>
+                </div>
+                <div class="txt" style="text-align: center; opacity: 0.5; margin-top: 2%;">
+                  <p><small>To keep connected to us please<br>enter your details here to sign up</small></p>
                 </div>
                 <div class="card-body">
                     <form action="{% url 'tutor-reg' %}" method="POST" novalidate>
@@ -33,12 +48,19 @@
                              <input type="submit" value="Register" class="btn btn-block btn-primary">
                            </div>
                     </form>
+                    
                  </div>
                     </div>   
                 </div>
-              </div>
+
+
+
+              
             </div>
-        </div>
+         
+              </div>
+          
+    
       </section>
 
 </body>

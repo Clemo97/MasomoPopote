@@ -81,7 +81,7 @@
             <p style="width: 80%; margin:auto;" class="text-muted">
                 <span>5/5 lessons</span>
                 <span style="float: right;">ENROLL</span>
-                <form method="POST" action="{% url 'enroll'  %}">
+                <form method="POST" action="{% url 'enroll' course.pk %}">
                     {% csrf_token %}
                     <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">Enroll</button>
                 </form>
