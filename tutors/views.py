@@ -6,15 +6,8 @@ from django.views.generic import CreateView
 from django.views.generic import DeleteView, ListView, UpdateView,DetailView, CreateView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
-
-
-
-
 from .models import *
 from .forms import *
-
-
-
 
 class TutorReg(CreateView):
     model = User
@@ -68,7 +61,7 @@ def publishedTests(request):
 
 class addCourse(LoginRequiredMixin, CreateView):
     model = Course
-    fields = ['title', 'descriptions', 'body','category','coursePoster']
+    fields = ['title','category','coursePoster', 'descriptions', 'body']
     template_name = 'tutors/newCourse.html'
     def form_valid(self, form):
         form.instance.tutor=self.request.user.tutor
@@ -76,7 +69,7 @@ class addCourse(LoginRequiredMixin, CreateView):
 
 class addTest(LoginRequiredMixin, CreateView):
     model = test
-    fields = ['title', 'body','course']
+    fields = ['title','course', 'body']
     template_name = 'tutors/newTest.html'
     def form_valid(self, form):
         # form.instance.tutor=self.request.user
