@@ -11,9 +11,6 @@ from .models import *
 from .forms import *
 
 
-def tutor(request):
-    return render(request, 'tutors/tutor.html')
-
 
 
 class TutorReg(CreateView):
@@ -43,6 +40,15 @@ def loginTutor(request):
                 messages.error(request,"Invalid username or password")
     return render(request, 'tutors/login.html',
     context={'form':AuthenticationForm()})
+
+
+
+def tutor(request):
+    publishedCourses = Course.objects.filter(tutor = request.user.tutor).all()
+
+
+    
+    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses})
 
 
 

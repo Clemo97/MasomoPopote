@@ -99,10 +99,10 @@
     </div>
     <div class="card courses">
         <h4 class="text-muted">Published Courses:</h4>
-        {% for activeCourse in activeCourses %}
+        {% for publishedCourse in publishedCourses %}
         <div class="card angular">
-            <h5 class="text-muted">{{activeCourse.course.category}}</h5>
-            <img src="{{activeCourse.course.coursePoster.url}}" alt="" style="height:230px">
+            <h5 class="text-muted">{{publishedCourse.category}}</h5>
+            <img src="{{publishedCourse.coursePoster.url}}" alt="" style="height:230px">
             <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress>
             </p>
             <p style="width: 80%; margin:auto;" class="text-muted">
