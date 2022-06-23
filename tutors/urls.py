@@ -16,6 +16,7 @@ urlpatterns = [
     path('logout-tutor/', auth_views.LogoutView.as_view(), name='tutor-logout'),
     path('new-course/', addCourse.as_view(), name='new-course'),
     path('new-test/', addTest.as_view(), name='new-test'),
+    #postedTests
 ]
 
 if settings.DEBUG:
