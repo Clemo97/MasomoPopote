@@ -81,16 +81,17 @@
     
     <div class="card courses">
         <h4 class="text-muted">Available Courses:</h4>
+    
         {% for course in courses %}
         <div class="card angular">
             <h5 class="text-muted">{{course.category}}</h5>
             <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>5/5 lessons</span>
-                <span style="float: right;">ENROLL</span>
+                <!-- <span>5/5 lessons</span> -->
                 <form method="POST" action="{% url 'enroll' course.pk %}">
                     {% csrf_token %}
-                    <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">Enroll</button>
+
+                    <button  style="float: right;" class="button1" type="submit button">Enroll</button>
                 </form>
             </p>
         </div>
