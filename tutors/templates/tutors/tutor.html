@@ -27,31 +27,31 @@
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="{% url 'home' %}">
+                    <a href="{% url 'tutor' %}">
                         <i class='bx bx-home-alt icon'></i>
                         <span class="text nav-text">HOME</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{% url 'course' %}">
+                    <a href="{% url 'new-course' %}">
                         <i class='bx bx-plus-circle icon'></i>
                         <span class="text nav-text">COURSE</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{% url 'test' %}">
+                    <a href="{% url 'new-test' %}">
                         <i class='bx bx-list-plus icon'></i>
                         <span class="text nav-text">TEST</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{% url 'postedcourses' %}">
+                    <a href="#">
                         <i class='bx bx-book-open icon'></i>
                         <span class="text nav-text">POSTED COURSES</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{% url 'postedtest' %}">
+                    <a href="#">
                         <i class='bx bx-slideshow icon'></i>
                         <span class="text nav-text">POSTED TESTS</span>
                     </a>
@@ -61,7 +61,7 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="logout">
+                <a href="{% url 'tutor-logout' %}">
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Log Out</span>
                 </a>
@@ -86,12 +86,12 @@
     <div class="intro">
         <div class="card tutor">
             <h4 class="text-muted">Enrollment list:</h4>
-            {% for test in tests %}
+            {% for record in students %}
             <div class="card tests">
-                <h4 style="color: #5E5CC0;">FirstName LastName</h4>
-                <small>Program</small>
+                <h4 style="color: #5E5CC0;">{{record}} </h4>
+                <small></small> <!--Add programs-->
                 <strong>
-                    <p style="float: right; text-transform: uppercase; color:#5E5CC0;">View</p>
+                    <!-- <p style="float: right; text-transform: uppercase; color:#5E5CC0;">View</p> -->
                 </strong>
             </div>
             {% endfor %}
@@ -99,11 +99,11 @@
     </div>
     <div class="card courses">
         <h4 class="text-muted">Published Courses:</h4>
-        {% for activeCourse in activeCourses %}
+        {% for publishedCourse in publishedCourses %}
         <div class="card angular">
-            <h5 class="text-muted">{{activeCourse.course.category}}</h5>
-            <img src="{{activeCourse.course.coursePoster.url}}" alt="" style="height:230px">
-            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress>
+            <h5 class="text-muted">{{publishedCourse.category}}</h5>
+            <img src="{{publishedCourse.coursePoster.url}}" alt="" style="height:230px">
+            <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress> -->
             </p>
             <p style="width: 80%; margin:auto;" class="text-muted">
                 <span>Enrolled students:</span>

@@ -1,3 +1,4 @@
+from turtle import pu
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -7,12 +8,12 @@ from django.views.generic import DeleteView, ListView, UpdateView,DetailView, Cr
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 
+
+
+
 from .models import *
 from .forms import *
 
-
-def tutor(request):
-    return render(request, 'tutors/tutor.html')
 
 
 
@@ -43,6 +44,28 @@ def loginTutor(request):
                 messages.error(request,"Invalid username or password")
     return render(request, 'tutors/login.html',
     context={'form':AuthenticationForm()})
+
+
+
+
+def tutor(request):
+
+    publishedCourses = Course.objects.filter(tutor = request.user.tutor).all()
+    # enroll = StudentProfile.enrolledIn
+    # students = publishedCourses.students.all()
+
+    students = Student.objects.filter(enrolls__id__in = publishedCourses).all()
+    # instance = Student.objects.filter(enrolls__id__in = publishedCourses).values('user')[0]
+
+    # students = instance['user']
+    print(students)
+    # print(students.count())
+    
+   
+    
+           
+    
+    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students})
 
 
 
