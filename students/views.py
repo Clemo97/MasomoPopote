@@ -88,9 +88,14 @@ def availablePrograms(request):
 
 
 class CourseDetail(LoginRequiredMixin, View):
-    # template_name = 'tutors/course.html'
-
     def get(self, request, pk):
         displayedCourses =get_object_or_404(Course, pk=pk)
         return render (request, 'tutors/course.html', {'displayedCourses':displayedCourses})
     # return render(request, 'tutors/course
+
+
+class TestDetail(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        displayedtest =get_object_or_404(test, pk=pk)
+        return render (request, 'tutors/test.html', {'displayedtest':displayedtest})
+    

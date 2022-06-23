@@ -82,9 +82,11 @@
             <h4 class="text-muted">Available tests:</h4>
             {% for test in tests %}
             <div class="card tests">
-                <h4 style="color: #5E5CC0;">{{test.title}}</h4>
+                <h4 style="color: #5E5CC0;"><a href="{% url 'testDetail' test.pk %}" style="text-decoration: none; color: #5E5CC0;">{{test.title}}</a></h4>
                 <small>Deadline 22/08/2022</small>
-                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
+                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">
+                    <a href="{% url 'testDetail' test.pk %}" style="text-decoration: none; color: #5E5CC0;">
+                        ATTEMPT</a></p></strong>
             </div>
             {% endfor %}
         </div>
@@ -115,7 +117,8 @@
             <img src="{{activeCourse.coursePoster.url}}" alt="" style="height:230px">
             <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p> -->
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <a href="{% url 'courseDetail' activeCourse.pk %}">a</a>
+                <a href="{% url 'courseDetail' activeCourse.pk %}"
+                style="text-decoration: none; color: #5E5CC0;">VIEW</a>
             </p>
         </div>
         {% endfor %}
