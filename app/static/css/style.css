@@ -367,9 +367,9 @@ section.home {
 }
 
 .courses {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 16px;
@@ -394,7 +394,7 @@ section.home {
  .intro {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 p progress[value].ang {
     color: #5E5CC0;
@@ -405,8 +405,7 @@ p progress[value].ang {
 }
 .angular,.react,.python {
     color: #5E5CC0;
-    width: 30%;
-    margin: auto;
+    width: 25%;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 16px;
@@ -416,13 +415,21 @@ p progress[value].ang {
     box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     backdrop-filter: blur(5px);
 }
-
-/* carousel styles */
-
-/* .colz{
-    background-color: #F2EFEF;
-
+/* .angulary {
+    color: #5E5CC0;
+    float: left;
+    width: 40%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    border-top: 0;
+    margin-top: 2.5%;
+    padding: 20px 15px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px); 
 } */
+
 
 .img-text {
     width: 100%;
@@ -447,8 +454,7 @@ p progress[value].ang {
     overflow: hidden;
     top: 5%;
     left: 25%;
-
-    
+        
 }
 .img-area img {
     width: 100%;
@@ -485,4 +491,42 @@ p progress[value].ang {
 .carousel-control-prev {
 	/* left: auto; */
 	right: 40px;
+}
+
+
+/* Responsiveness */
+@media screen and (max-width: 700px) {
+    .whole{
+        width: 100%;
+        margin: auto;
+        margin-top: 1%;
+    }
+    .hero {
+        height: 500px;
+    }
+    #about{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        height: auto;
+        
+    }
+    .aboutImg img{
+       margin-top: 25%;
+       height: auto;
+    }
+    #programs{
+        margin-top: 20%;
+    }
+    .angular{
+        width: 50%;
+    }
+    .coz{
+        height: 50vh;
+    }
+    .courses{
+        width: 90%;
+        margin: auto;
+        margin-top: 5%;
+    }
 }

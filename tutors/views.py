@@ -54,7 +54,8 @@ def tutor(request):
     return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students, 'count': count})
 
 def publishedTests(request):
-        publishedTests = test.objects.filter(tutor = request.user.tutor).all()
+        publishedTests = test.objects.all()
+        # publishedTests = test.objects.filter(tutor = request.user.tutor).all()
 
         return render(request, 'tutors/postedTest.html', {'publishedTests': publishedTests})
 

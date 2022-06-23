@@ -95,20 +95,19 @@ WSGI_APPLICATION = 'Masomo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 # 
-#         'NAME': 'masomo',
-#         'USER': 'moringa',
-#         'PASSWORD': 'morces',
+        'NAME': 'popote',
+        'USER': 'moringa',
+        'PASSWORD': 'morces',
 
-        'NAME': 'masomopopote',
-        'USER': 'atieno',
-        'PASSWORD': 'mishi',
+        # 'NAME': 'masomopopote',
+        # 'USER': 'atieno',
+        # 'PASSWORD': 'mishi',
 
-        'HOST':'localhost',
-        'PORT':''
+        # 'HOST':'localhost',
+        # 'PORT':''
         
         
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',

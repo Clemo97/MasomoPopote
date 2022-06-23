@@ -1,6 +1,3 @@
-from lzma import is_check_supported
-from multiprocessing.dummy import current_process
-from threading import activeCount
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import CreateView
 from django.contrib.auth import login, logout, authenticate
