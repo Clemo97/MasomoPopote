@@ -27,7 +27,14 @@
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="{% url 'home' %}">
+                    <a href="">
+                        <i class='bx bxs-graduation icon' ></i>
+                        <small class="text nav-text" style="font-size: 11px;">Logged in as: <small>{{user.first_name}} {{user.last_name}}</small>
+                    </small>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'students' %}">
                         <i class='bx bx-home-alt icon' ></i>
                         <span class="text nav-text">HOME</span>
                     </a>
@@ -38,18 +45,18 @@
                         <span class="text nav-text">PROGRAMS</span>
                     </a>
                 </li>
-                <li class="nav-link">
+                <!-- <li class="nav-link">
                     <a href="#">
                         <i class='bx bx-notepad icon' ></i>
                         <span class="text nav-text">TESTS</span>
                     </a>
-                </li>
+                </li> -->
                                 
             </ul>
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="logout">
+                <a href="{% url 'logout' %}">
                     <i class='bx bx-log-out icon' ></i>
                     <span class="text nav-text">Log Out</span>
                 </a>
@@ -70,20 +77,21 @@
     </div>
 </nav>
 <section class="home">
-    <h3 class="text">My Dashboard</h3>
+    <h3 class="text text-center">{{user.first_name}}'s  Dashboard</h3>
     
     <div class="card courses">
         <h4 class="text-muted">Available Courses:</h4>
+    
         {% for course in courses %}
         <div class="card angular">
             <h5 class="text-muted">{{course.category}}</h5>
             <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>5/5 lessons</span>
-                <span style="float: right;">ENROLL</span>
+                <!-- <span>5/5 lessons</span> -->
                 <form method="POST" action="{% url 'enroll' course.pk %}">
                     {% csrf_token %}
-                    <button class="btn btn-outline-primary btn-sm mt-2" type="submit button">Enroll</button>
+
+                    <button  style="float: right;" class="button1" type="submit button">Enroll</button>
                 </form>
             </p>
         </div>
