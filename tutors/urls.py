@@ -16,9 +16,11 @@ urlpatterns = [
     path('logout-tutor/', auth_views.LogoutView.as_view(), name='tutor-logout'),
     path('new-course/', addCourse.as_view(), name='new-course'),
     path('new-test/', addTest.as_view(), name='new-test'),
+    path('posted-tests/', views.publishedTests, name = 'postedTest'), #postedTests
+    
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-#     urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += staticfiles_urlpatterns()

@@ -61,11 +61,6 @@ class courseEnroll(LoginRequiredMixin, View):
         course.students.add(request.user.student)
         return redirect('students')
 
-        # for student in course.students.all():
-        #     if student == request.user.student:
-        #         is_student = True
-        #         course.students.add(request.user.student)
-                # return redirect('students')
 
 class markComplete(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
@@ -84,3 +79,18 @@ class markComplete(LoginRequiredMixin, View):
 def availablePrograms(request): 
     courses = Course.objects.all()
     return render(request, 'students/availablePrograms.html', {'courses': courses})
+
+
+
+class CourseDetail(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        displayedCourses =get_object_or_404(Course, pk=pk)
+        return render (request, 'tutors/course.html', {'displayedCourses':displayedCourses})
+    # return render(request, 'tutors/course
+
+
+class TestDetail(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        displayedtest =get_object_or_404(test, pk=pk)
+        return render (request, 'tutors/test.html', {'displayedtest':displayedtest})
+    

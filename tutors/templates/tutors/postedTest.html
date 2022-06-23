@@ -95,21 +95,10 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6 mx-auto card new">
-              
-                    <form action="{% url 'new-test' %}" method="POST" novalidate>
-                      {% csrf_token %}
-                         {% for field in form.visible_fields %}
-                           <div class="form-group">
-                               {{ field.label_tag }}
-                                  {% render_field field class="form-control" %}
-                                    {% for error in field.errors %}
-                                      <span style="color:red">{{ error }}</span>
-                                    {% endfor %}
-                         {% endfor %}
-                             <input type="submit" value="SAVE TEST" class="btn btn-block btn-primary">
-                           </div>
-                    </form>
-                    
+              {% for publishedTest in publishedTests %}
+              {{publishedTest.title}}
+              {% endfor %}
+
                 </div>
               </div>
             </div>

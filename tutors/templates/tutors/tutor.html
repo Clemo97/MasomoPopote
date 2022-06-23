@@ -45,13 +45,13 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="#postedCourses">
                         <i class='bx bx-book-open icon'></i>
                         <span class="text nav-text">POSTED COURSES</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{% url 'postedTest' %}">
                         <i class='bx bx-slideshow icon'></i>
                         <span class="text nav-text">POSTED TESTS</span>
                     </a>
@@ -86,7 +86,6 @@
     <div class="intro">
         <div class="card tutor">
             <h4 class="text-muted">Enrollment list:</h4>
-            {% if students %}
             {% for record in students %}
             <div class="card tests">
                 <h4 style="color: #5E5CC0;">{{record}} </h4>
@@ -96,14 +95,10 @@
                 </strong>
             </div>
             {% endfor %}
-            {% else %}
-            <h4 class="text-muted">No students</h4>
-            {% endif %}
         </div>
     </div>
-    <div class="card courses">
+    <div class="card courses" id="postedCourses">
         <h4 class="text-muted">Published Courses:</h4>
-        {% if publishedCourses %}
         {% for publishedCourse in publishedCourses %}
         <div class="card angular">
             <h5 class="text-muted">{{publishedCourse.category}}</h5>
@@ -111,13 +106,12 @@
             <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress> -->
             </p>
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>Enrolled students:</span>
+
+                <span>Enrolled students:{{count}}</span>
             </p>
         </div>
         {% endfor %}
-        {% else %}
-            <h4 class="text-muted">You haven't published any courses yet</h4>
-        {% endif %}
+
 
     </div>
 

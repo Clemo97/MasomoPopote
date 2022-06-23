@@ -1,5 +1,6 @@
-
-from django.shortcuts import render, redirect
+import re
+from typing import List
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,15 +8,8 @@ from django.views.generic import CreateView
 from django.views.generic import DeleteView, ListView, UpdateView,DetailView, CreateView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
-
-
-
-
 from .models import *
 from .forms import *
-
-
-
 
 class TutorReg(CreateView):
     model = User
@@ -46,8 +40,6 @@ def loginTutor(request):
     context={'form':AuthenticationForm()})
 
 
-
-
 def tutor(request):
 
     publishedCourses = Course.objects.filter(tutor = request.user.tutor).all()
@@ -56,22 +48,20 @@ def tutor(request):
 
     students = Student.objects.filter(enrolls__id__in = publishedCourses).all()
     # instance = Student.objects.filter(enrolls__id__in = publishedCourses).values('user')[0]
-
-    # students = instance['user']
     print(students)
-    # print(students.count())
-    
-   
-    
-           
-    
-    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students})
+    count = students.count()
+    print(count)
+    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students, 'count': count})
 
+def publishedTests(request):
+        publishedTests = test.objects.filter(tutor = request.user.tutor).all()
+
+        return render(request, 'tutors/postedTest.html', {'publishedTests': publishedTests})
 
 
 class addCourse(LoginRequiredMixin, CreateView):
     model = Course
-    fields = ['title', 'descriptions', 'body','category','coursePoster']
+    fields = ['title','category','coursePoster', 'descriptions', 'body']
     template_name = 'tutors/newCourse.html'
     def form_valid(self, form):
         form.instance.tutor=self.request.user.tutor
@@ -79,10 +69,12 @@ class addCourse(LoginRequiredMixin, CreateView):
 
 class addTest(LoginRequiredMixin, CreateView):
     model = test
-    fields = ['title', 'body','course']
+    fields = ['title','course', 'body']
     template_name = 'tutors/newTest.html'
     def form_valid(self, form):
         # form.instance.tutor=self.request.user
         return super().form_valid(form)
 
 
+    
+   

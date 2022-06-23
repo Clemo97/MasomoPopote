@@ -27,7 +27,7 @@ class Student(models.Model):
 class Course(models.Model):
     tutor=models.ForeignKey(Tutor, on_delete=models.CASCADE)
     title=models.CharField(max_length=100) 
-    descriptions=models.TextField()
+    descriptions=models.CharField(max_length=100) 
     body = models.TextField()
     coursePoster = models.ImageField(upload_to='coursePoster')
     category = models.CharField(max_length=100)

@@ -18,7 +18,21 @@
     height: 704px;
     margin-top: -5em;
 } */
+.heroH{
+    font-family: 'Inika';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 63px;
 
+}
+.headingS{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
 
 
 
@@ -26,7 +40,7 @@
 
 
 /* CSS */
-.button-1 {
+.button1 {
   background-color: #5E5CC0;
   border-radius: 8px;
   border-style: none;
@@ -39,6 +53,7 @@
   font-weight: 500;
   height: 50px;
   line-height: 20px;
+  font-weight: bold;
   list-style: none;
   margin: 0;
   outline: none;
@@ -53,11 +68,13 @@
   touch-action: manipulation;
 }
 
-.button-1:hover,
-.button-1:focus {
+.button1:hover,
+.button1:focus {
   background-color: #FFFFFF;
   color:#5E5CC0;
   border: solid #5E5CC0;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* side nav */
@@ -71,7 +88,7 @@
 
 :root {
     /* ==== Colors ===== */
-    --body-color: #E4E9F7;
+    --body-color: #Ffff;
     --sidebar-color: #FFF;
     --primary-color: #5E5CC0;
     --primary-color-light: #F6F5FF;
@@ -387,6 +404,7 @@ p progress[value].ang {
   
 }
 .angular,.react,.python {
+    color: #5E5CC0;
     width: 30%;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.2);
@@ -401,15 +419,22 @@ p progress[value].ang {
 
 /* carousel styles */
 
+/* .colz{
+    background-color: #F2EFEF;
+
+} */
+
 .img-text {
     width: 100%;
     display: block;
     text-align: center;
     padding: 5% 5%;
-    color: #fff;
+    color: #5E5CC0;
     border-radius: 15px;
     padding-top: 40%;
     font-style: italic;
+    background-color: #F2EFEF;
+
 }
 .single-box {
     position: relative;
@@ -422,6 +447,7 @@ p progress[value].ang {
     overflow: hidden;
     top: 5%;
     left: 25%;
+
     
 }
 .img-area img {
@@ -445,7 +471,7 @@ p progress[value].ang {
     text-decoration: none;
 	width: 30px;
 	height: 30px;
-    background: #666;
+    background: #5E5CC0;
     text-shadow: none;
 	top: -50px;
     border-radius: 50%;
