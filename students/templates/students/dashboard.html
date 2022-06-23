@@ -80,7 +80,6 @@
     <div class="intro">
         <div class="card new">
             <h4 class="text-muted">Available tests:</h4>
-            {% if tests %}
             {% for test in tests %}
             <div class="card tests">
                 <h4 style="color: #5E5CC0;">{{test.title}}</h4>
@@ -88,23 +87,16 @@
                 <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
             </div>
             {% endfor %}
-            {% else %}
-            <h4 class="text-muted">Tests have not been posted.</h4>
-            {% endif %}
         </div>
         <!--NEWS-->
         <div class="what">
             <h4 class="text-muted">What's new:</h4>
-            {% if activeCourse %}
             {% for activeCourse in activeCourses %}
             <div class="card headline">
                 <h4 class="">{{activeCourse.title}}</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
             </div>
             {% endfor %}
-            {% else %}
-            <h4 class="text-muted">You don't have any active courses yet</h4>
-            {% endif %}
                 <div class="card headline">
                 <h4 class="">Headline 2</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
