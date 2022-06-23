@@ -60,12 +60,9 @@ def tutor(request):
     # students = instance['user']
     print(students)
     # print(students.count())
-    
-   
-    
-           
-    
-    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students})
+    count = students.count()
+    print(count)
+    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students, 'count': count})
 
 
 
