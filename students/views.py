@@ -61,11 +61,6 @@ class courseEnroll(LoginRequiredMixin, View):
         course.students.add(request.user.student)
         return redirect('students')
 
-        # for student in course.students.all():
-        #     if student == request.user.student:
-        #         is_student = True
-        #         course.students.add(request.user.student)
-                # return redirect('students')
 
 class markComplete(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
