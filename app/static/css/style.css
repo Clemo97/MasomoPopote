@@ -1,15 +1,8 @@
 .hero{
     background-image: url(/app/static/assets/hero.png);  
-    /* background-size: cover; */
-    /* background-position: center; */
     background-repeat: no-repeat;
     height: 750px;
-    /* position: absolute;
-    width: 984px;
-    height: 553px;
-    left: 340px;
-    top: 150px; */
-
+   
 }
 .abtText{
     margin-top: 3em
