@@ -45,13 +45,13 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="#postedCourses">
                         <i class='bx bx-book-open icon'></i>
                         <span class="text nav-text">POSTED COURSES</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{% url 'postedTest' %}">
                         <i class='bx bx-slideshow icon'></i>
                         <span class="text nav-text">POSTED TESTS</span>
                     </a>
@@ -97,7 +97,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="card courses">
+    <div class="card courses" id="postedCourses">
         <h4 class="text-muted">Published Courses:</h4>
         {% for publishedCourse in publishedCourses %}
         <div class="card angular">
@@ -106,7 +106,8 @@
             <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress> -->
             </p>
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>Enrolled students:</span>
+
+                <span>Enrolled students:{{count}}</span>
             </p>
         </div>
         {% endfor %}
