@@ -32,7 +32,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Offcanvas navbar large">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" aria-label="Offcanvas navbar large">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}" style="font-weight: bold;">MASOMO <span
                     style="color: #5E5CC0;">POPOTE</span></a>
@@ -69,9 +69,10 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+
+    <div class="container-fluid mt-3 pt-3" style="height:700px;">
         <!--HeroSection-->
-        <div class="container pb-3">
+        <div class="container pb-3" >
             <div class="row pt-5">
                 <div class="col-4">
                     <div style="height: 50px;">
@@ -79,18 +80,18 @@
                     <div style="height: 100px;">
 
                     </div>
-                    <h1 class="fw-bold">
+                    <h1 class="fw-bold heroH">
                         Get Access to free learning resources!
                     </h1>
-                    <div style="height: 25px;">
+                    <div style="height: 30px;">
                     </div>
                     <h6>
                         Sign up for free, and reveal the <span style="color: #5E5CC0; font-weight: bold;">MORE</span> in
                         you!
                     </h6>
-                    <div style="height: 50px;">
+                    <div style="height: 90px;">
                     </div>
-                    <button class="button-1" role="button">ENROLL NOW</button>
+                    <a class="button1" href="{% url 'register' %}" >ENROLL NOW</a>
 
                 </div>
 
@@ -100,14 +101,16 @@
             </div>
 
         </div>
+        </div>
 
         <!--ABOUT-->
-        <div class="container  pt-5" id="about">
-            <h1 class="text-center">
+        <div class="container  pt-5 mb-5" id="about"  style="padding-top: 17vh!important; height: 500px;">
+            <h1 class="text-center headingS">
                 ABOUT US
             </h1>
             <div class="rob mt-3" style="display: flex; justify-content: space-between; flex-wrap: wrap; width: 100%; ">
                 <div class="colz-5 abtText" style="width: 40%;">
+
                     <p class="text-center abtParagraph">
                         We conveniently enable students from across the globe
                         access learning materials from wherever they are.
@@ -124,16 +127,16 @@
                     </p>
                 </div>
                 <div class="colz-7 aboutImg" style="width: 60%;">
-                    <img src="{% static 'assets/aboutUs.svg' %}" alt="" width="100%">
+                    <img src="{% static 'assets/aboutUs.svg' %}" alt="" width="100%" style="height:50%;">
                 </div>
             </div>
         </div>
 
         <!--PROGRAMS-->
 
-        <div class="container  pt-2" id="programs">
+        <div class="container  pt-5" id="programs">
 
-            <h1 class="text-center">OUR PROGRAMS</h1>
+            <h1 class="text-center headingS">OUR PROGRAMS</h1>
 
             <div class="row">
                 <div class="col-sm-12">
@@ -150,7 +153,7 @@
                                     <div class="colz" style="width: 50%; margin:auto;">
                                         <div class="single-box">
                                             <div class="img-area"><img src="{% static 'assets/angular.png'%}" alt=""></div>
-                                            <div class="img-text bg-dark">
+                                            <div class="img-text">
                                                 <p class="word">
                                                     <strong>ANGULAR</strong>
                                                 </p>
@@ -161,11 +164,11 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="row">
+                            <div class="row">
                                     <div class="colz" style="width: 50%; margin:auto;">
                                         <div class="single-box">
                                             <div class="img-area"><img src="{% static 'assets/python.png' %}" alt="" height="250"></div> 
-                                            <div class="img-text bg-dark">
+                                            <div class="img-text">
                                                 <p class="word">
                                                     <!-- <strong>PYTHON</strong> -->
                                                 </p>
@@ -180,7 +183,7 @@
                                     <div class="colz" style="width: 50%; margin:auto;">
                                         <div class="single-box">
                                             <div class="img-area"><img src="{% static 'assets/react.png' %}" alt=""></div>
-                                            <div class="img-text bg-dark">
+                                            <div class="img-text ">
                                                 <p class="word">
                                                     <!-- <strong>REACT</strong> -->
                                                 </p>
