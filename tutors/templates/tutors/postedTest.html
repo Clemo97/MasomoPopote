@@ -91,14 +91,17 @@
     </div>
 </nav>
 
-    <section>
+    <section class="bg-light" style="height: 100vh;">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 mx-auto card new">
+            <div class="col-md-9 mx-auto card new" style="margin-top: 5%;">
+              {% if publishedTests %}
               {% for publishedTest in publishedTests %}
               {{publishedTest.title}}
               {% endfor %}
-
+              {% else%}
+              <h4>You haven't published any Tests yet...</h4>
+              {% endif %}
                 </div>
               </div>
             </div>
