@@ -1,3 +1,4 @@
+from turtle import pu
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -5,6 +6,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import CreateView
 from django.views.generic import DeleteView, ListView, UpdateView,DetailView, CreateView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+
+
+
 
 
 from .models import *
@@ -43,12 +47,25 @@ def loginTutor(request):
 
 
 
+
 def tutor(request):
+
     publishedCourses = Course.objects.filter(tutor = request.user.tutor).all()
+    # enroll = StudentProfile.enrolledIn
+    # students = publishedCourses.students.all()
 
+    students = Student.objects.filter(enrolls__id__in = publishedCourses).all()
+    # instance = Student.objects.filter(enrolls__id__in = publishedCourses).values('user')[0]
 
+    # students = instance['user']
+    print(students)
+    # print(students.count())
     
-    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses})
+   
+    
+           
+    
+    return render(request, 'tutors/tutor.html', {'publishedCourses': publishedCourses, 'students': students})
 
 
 
