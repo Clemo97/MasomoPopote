@@ -17,6 +17,7 @@ urlpatterns = [
     path('new-course/', addCourse.as_view(), name='new-course'),
     path('new-test/', addTest.as_view(), name='new-test'),
     path('posted-tests/', views.publishedTests, name = 'postedTest'), #postedTests
+    
 ]
 
 if settings.DEBUG:

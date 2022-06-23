@@ -113,10 +113,9 @@
         <div class="card angular">
             <h5 class="text-muted">{{activeCourse.category}}</h5>
             <img src="{{activeCourse.coursePoster.url}}" alt="" style="height:230px">
-            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
+            <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p> -->
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>5/5 lessons</span>
-                <span style="float: right;">100%</span>
+                <a href="{% url 'courseDetail' activeCourse.pk %}">a</a>
             </p>
         </div>
         {% endfor %}

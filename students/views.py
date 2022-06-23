@@ -84,3 +84,13 @@ class markComplete(LoginRequiredMixin, View):
 def availablePrograms(request): 
     courses = Course.objects.all()
     return render(request, 'students/availablePrograms.html', {'courses': courses})
+
+
+
+class CourseDetail(LoginRequiredMixin, View):
+    # template_name = 'tutors/course.html'
+
+    def get(self, request, pk):
+        displayedCourses =get_object_or_404(Course, pk=pk)
+        return render (request, 'tutors/course.html', {'displayedCourses':displayedCourses})
+    # return render(request, 'tutors/course

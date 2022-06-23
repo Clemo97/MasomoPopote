@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
-from students.views import studentReg, courseEnroll, markComplete
+from students.views import studentReg, courseEnroll, markComplete, CourseDetail
 
 from students.views import studentReg
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -18,6 +18,7 @@ urlpatterns = [
     path('enroll/<int:pk>/',courseEnroll.as_view(), name='enroll'),
     path('complete/<int:pk>/', markComplete.as_view(), name='complete'),
     path('programs/', views.availablePrograms, name='programs'),
+    path('course-detail/<int:pk>/', CourseDetail.as_view(), name='courseDetail'),
 
 
 ]
