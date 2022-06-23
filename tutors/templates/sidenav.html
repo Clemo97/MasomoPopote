@@ -1,13 +1,5 @@
 {% extends 'base.html' %}
 {% load static%}
-{% block styles %}
-
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock styles %}
-
-
-{% block content %}
-
 <nav class="sidebar close">
     <header>
         <div class="image-text">
@@ -82,40 +74,6 @@
     </div>
 </nav>
 <section class="home">
-    <h3 class="text">My Dashboard</h3>
-    <div class="intro">
-        <div class="card tutor">
-            <h4 class="text-muted">Enrollment list:</h4>
-            {% for test in tests %}
-            <div class="card tests">
-                <h4 style="color: #5E5CC0;">FirstName LastName</h4>
-                <small>Program</small>
-                <strong>
-                    <p style="float: right; text-transform: uppercase; color:#5E5CC0;">View</p>
-                </strong>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="card courses">
-        <h4 class="text-muted">Published Courses:</h4>
-        {% for activeCourse in activeCourses %}
-        <div class="card angular">
-            <h5 class="text-muted">{{activeCourse.course.category}}</h5>
-            <img src="{{activeCourse.course.coursePoster.url}}" alt="" style="height:230px">
-            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress>
-            </p>
-            <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>Enrolled students:</span>
-            </p>
-        </div>
-        {% endfor %}
-
-
-    </div>
-
+    <div class="text">Dashboard</div>
 </section>
-
-
-
-{% endblock %}
+<script src="{% static 'js/script.js' %}"></script>
