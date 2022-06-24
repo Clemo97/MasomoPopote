@@ -45,6 +45,7 @@ Before you begin running the application, you must first install all the depende
   ```
 (env) $ psql CREATE DATABASE *DATABASE_NAME*;
 (env) $ pip install psycopg2
+
 ```
 
 2. Create a new .env file and set up the following configurations:
@@ -76,12 +77,13 @@ Before you begin running the application, you must first install all the depende
 
 To test the two applications, you can:
 
-```
+
 
  Test the  application (tutors):
 
 ```
 (env) $ python3 manage.py test tutors
+
 ```
 
 ## Deployment
