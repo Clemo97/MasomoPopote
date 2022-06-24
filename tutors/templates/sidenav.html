@@ -4,10 +4,10 @@
     <header>
         <div class="image-text">
             <div class="text header-text">
-                <span class="name">MASOMO POPOTE</span><br>
+                <span class="name">MASOMO <span style="color: #5E5CC0;">POPOTE</span> </span><br>
             </div>
         </div>
-        
+
         <i class="bx bx-chevron-right toggle"></i>
     </header>
 
@@ -19,38 +19,50 @@
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-home-alt icon' ></i>
+                    <a href="{% url 'home' %}">
+                        <i class='bx bx-home-alt icon'></i>
                         <span class="text nav-text">HOME</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                        <span class="text nav-text">PROGRAMS</span>
+                    <a href="{% url 'course' %}">
+                        <i class='bx bx-plus-circle icon'></i>
+                        <span class="text nav-text">COURSE</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-bell icon' ></i>
-                        <span class="text nav-text">TESTS</span>
+                    <a href="{% url 'test' %}">
+                        <i class='bx bx-list-plus icon'></i>
+                        <span class="text nav-text">TEST</span>
                     </a>
                 </li>
-                                
+                <li class="nav-link">
+                    <a href="{% url 'postedcourses' %}">
+                        <i class='bx bx-book-open icon'></i>
+                        <span class="text nav-text">POSTED COURSES</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'postedtest' %}">
+                        <i class='bx bx-slideshow icon'></i>
+                        <span class="text nav-text">POSTED TESTS</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="#">
-                    <i class='bx bx-log-out icon' ></i>
+                <a href="logout">
+                    <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Log Out</span>
                 </a>
             </li>
 
             <li class="mode">
                 <div class="moon-sun">
-                    <i class='bx bx-moon icon moon' ></i>
-                    <i class='bx bx-sun icon sun' ></i>
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
                 </div>
                 <span class="mode-text text">Dark Mode</span>
 

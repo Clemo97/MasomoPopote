@@ -27,19 +27,26 @@
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="">
+                        <i class='bx bxs-graduation icon' ></i>
+                        <small class="text nav-text" style="font-size: 11px;">Logged in as: <small>{{user.first_name}} {{user.last_name}}</small>
+                    </small>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'students' %}">
                         <i class='bx bx-home-alt icon' ></i>
                         <span class="text nav-text">HOME</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{% url 'programs' %}">
                         <i class='bx bx-bar-chart-alt-2 icon' ></i>
                         <span class="text nav-text">PROGRAMS</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="#test">
                         <i class='bx bx-notepad icon' ></i>
                         <span class="text nav-text">TESTS</span>
                     </a>
@@ -49,7 +56,7 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="#">
+                <a href="{% url 'logout' %}">
                     <i class='bx bx-log-out icon' ></i>
                     <span class="text nav-text">Log Out</span>
                 </a>
@@ -70,47 +77,65 @@
     </div>
 </nav>
 <section class="home">
-    <h3 class="text">My Dashboard</h3>
+    <h3 class="text text-center">{{user.first_name}}'s  Dashboard</h3>
     <div class="intro">
-        <div class="card new">
-            <h4 class="text-muted">Available tests:</h4>
+        <div class="card new" id="test">
+            <h4 class="text-muted" style="color:#5E5CC0 ;">Available tests:</h4>
+            {% if tests %}
             {% for test in tests %}
             <div class="card tests">
-                <h4 style="color: #5E5CC0;">{{test.title}}</h4>
+                <h4 style="color: #5E5CC0;"><a href="{% url 'testDetail' test.pk %}" style="text-decoration: none; color: #5E5CC0;">{{test.title}}</a></h4>
                 <small>Deadline 22/08/2022</small>
-                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">ATTEMPT</p></strong>
+                <strong><p style="float: right; text-transform: uppercase; color:#5E5CC0;">
+                    <a href="{% url 'testDetail' test.pk %}" style="text-decoration: none; color: #5E5CC0;">
+                        ATTEMPT</a></p></strong>
             </div>
             {% endfor %}
+
+            {% else %}
+            <div class="card tests">
+                <h4 style="color: #5E5CC0;"><a style="text-decoration: none; color: #5E5CC0;">
+                    Tests will be posted in a few soon...</a></h4>
+                </div>
+            {% endif %}
         </div>
+        <!--NEWS-->
         <div class="what">
-            <h4 class="text-muted">What's new:</h4>
-            <div class="card headline">
-                <h4 class="">Headline 1</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
+            <h4 class="text-muted" style="color:#5E5CC0 ;">What's new:</h4>
+            {% if news %}
+                {% for pop in pops %}
                 <div class="card headline">
-                <h4 class="">Headline 2</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
-            <div class="card headline">
-                <h4 class="">Headline 3</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis accusantium animi ullam dolores </p>
-            </div>
+                    <h4 class="">{{pop.title}}</h4>
+                    <p class="text-muted">{{pop.description}}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="card headline">
+                    <h4 class="">Ooops... </h4>
+                    <p class="text-muted">There's no news... Study hard though!</p>
+                </div>
+            {% endif %}
         </div>
     </div>
     <div class="card courses">
-        <h4 class="text-muted">My Courses:</h4>
-        {% for course in courses %}
+        <h4 class="text-muted" style="color:#5E5CC0 ;">My Courses:</h4>
+        {% if activeCourses %}
+        {% for activeCourse in activeCourses %}
         <div class="card angular">
-            <h5 class="text-muted">{{course.category}}</h5>
-            <img src="{{course.coursePoster.url}}" alt="" style="height:230px">
-            <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p>
+            <h5 class="text-muted">{{activeCourse.category}}</h5>
+            <img src="{{activeCourse.coursePoster.url}}" alt="" style="height:230px">
+            <!-- <p class="pt-5" style="width: 100%; margin:auto;"><progress value="100" max="100" class="ang"></progress></p> -->
             <p style="width: 80%; margin:auto;" class="text-muted">
-                <span>5/5 lessons</span>
-                <span style="float: right;">100%</span>
+                <a href="{% url 'courseDetail' activeCourse.pk %}"
+                style="text-decoration: none; color: #5E5CC0;">VIEW</a>
             </p>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="card tests">
+            <h4 style="color: #5E5CC0;"><a href="#" style="text-decoration: none; color: #5E5CC0;">You're yet to enroll in any program...</a></h4>
+            </div>
+        {% endif %}
         
        
     </div>

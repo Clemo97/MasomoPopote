@@ -17,13 +17,22 @@ class Tutor(models.Model):
     def __str__(self):
             return self.user.first_name
 
+class Student(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE, related_name='student',primary_key = True) 
+    # courseInterest = models.TextField()
+
+    def __str__(self):
+        return self.user.first_name
+
 class Course(models.Model):
     tutor=models.ForeignKey(Tutor, on_delete=models.CASCADE)
     title=models.CharField(max_length=100) 
-    descriptions=models.TextField()
+    descriptions=models.CharField(max_length=100) 
     body = models.TextField()
     coursePoster = models.ImageField(upload_to='coursePoster')
     category = models.CharField(max_length=100)
+    students= models.ManyToManyField(Student, related_name='enrolls' )
+    # students = models.ForeignKey(Student, related_name='enrolls', on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.title
 
@@ -32,12 +41,26 @@ class Course(models.Model):
 
 
 
-class Student(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True) 
-    courseInterest = models.TextField()
+
+
+class StudentProfile(models.Model):
+    user = models.ForeignKey(Student, on_delete = models.CASCADE)
+    profileImage = models.ImageField(default='default.png',upload_to='profilePics')
+    enrolledIn = models.ForeignKey(Course, on_delete = models.CASCADE,  null=True)
+    
 
     def __str__(self):
-        return self.user.first_name
+        return f'{self.user}profile'
+
+
+class EnrolledCourse(models.Model):
+    student = models.ForeignKey(Student, on_delete = models.CASCADE, null=True, related_name='enrolledStudent')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, related_name='courseEnroll')
+    # enrollDate = models.DateTimeField(null=True)
+
+    def get_absolute_url(self):
+            return reverse('dashboard')
+
 
 class test(models.Model):
     course = models.ForeignKey(Course, on_delete = models.CASCADE)
