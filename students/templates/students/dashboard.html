@@ -80,7 +80,7 @@
     <h3 class="text text-center">{{user.first_name}}'s  Dashboard</h3>
     <div class="intro">
         <div class="card new" id="test">
-            <h4 class="text-muted">Available tests:</h4>
+            <h4 class="text-muted" style="color:#5E5CC0 ;">Available tests:</h4>
             {% if tests %}
             {% for test in tests %}
             <div class="card tests">
@@ -94,14 +94,14 @@
 
             {% else %}
             <div class="card tests">
-                <h4 style="color: #5E5CC0;"><a  style="text-decoration: none; color: #5E5CC0;">
+                <h4 style="color: #5E5CC0;"><a style="text-decoration: none; color: #5E5CC0;">
                     Tests will be posted in a few soon...</a></h4>
                 </div>
             {% endif %}
         </div>
         <!--NEWS-->
         <div class="what">
-            <h4 class="text-muted">What's new:</h4>
+            <h4 class="text-muted" style="color:#5E5CC0 ;">What's new:</h4>
             {% if news %}
                 {% for pop in pops %}
                 <div class="card headline">
@@ -118,7 +118,7 @@
         </div>
     </div>
     <div class="card courses">
-        <h4 class="text-muted">My Courses:</h4>
+        <h4 class="text-muted" style="color:#5E5CC0 ;">My Courses:</h4>
         {% if activeCourses %}
         {% for activeCourse in activeCourses %}
         <div class="card angular">
@@ -133,7 +133,7 @@
         {% endfor %}
         {% else %}
         <div class="card tests">
-            <h4 style="color: #5E5CC0;"><a href="{% url 'testDetail' test.pk %}" style="text-decoration: none; color: #5E5CC0;">You're yet to enroll in any program...</a></h4>
+            <h4 style="color: #5E5CC0;"><a href="#" style="text-decoration: none; color: #5E5CC0;">You're yet to enroll in any program...</a></h4>
             </div>
         {% endif %}
         

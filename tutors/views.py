@@ -55,7 +55,6 @@ def tutor(request):
 
 def publishedTests(request):
         publishedTests = test.objects.all()
-        # publishedTests = test.objects.filter(tutor = request.user.tutor).all()
 
         return render(request, 'tutors/postedTest.html', {'publishedTests': publishedTests})
 
