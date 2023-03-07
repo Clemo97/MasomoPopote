@@ -18,8 +18,6 @@ from decouple import config,Csv
 import django_heroku
 import dj_database_url
 import os
-
-
 import environ  # <-- Updated!
 
 env = environ.Env(  # <-- Updated!
@@ -38,13 +36,11 @@ environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')  # <-- Updated!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-
-ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'tutors.User'
 # Application definition
@@ -114,19 +110,22 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 # development
 
-DATABASES = {
-    # read os.environ['DATABASE_URL']
-    'default': env.db()  # <-- Updated!
-}
+# DATABASES = {
+#     # read os.environ['DATABASE_URL']
+#     'default': env.db()  # <-- Updated!
+# }
+# DATABASES = {
+#     "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
+# }
 
 
 # production
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default=config('DATABASE_URL')
-#         )
-#     }
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
