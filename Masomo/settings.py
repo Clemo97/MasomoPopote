@@ -19,18 +19,30 @@ import django_heroku
 import dj_database_url
 import os
 
+
+import environ  # <-- Updated!
+
+env = environ.Env(  # <-- Updated!
+    # set casting, default value
+    DEBUG=(bool, False),
+
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Take environment variables from .env file
+environ.Env.read_env(BASE_DIR / '.env')  # <-- Updated!
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '342s(s(!hsjd998sde8$=o4$3m!(o+kce2^97kp6#ujhi'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
+
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +60,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
+    'whitenoise.runserver_nostatic',
     'app',
     'students',
     'tutors',
@@ -62,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 ROOT_URLCONF = 'Masomo.urls'
@@ -73,11 +85,11 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'app', 
-                 'templates/app'),
+                'templates/app'),
             os.path.join(BASE_DIR, 'students', 
-                 'templates/students'),
+                'templates/students'),
             os.path.join(BASE_DIR, 'tutors', 
-                 'templates/tutors'),
+                'templates/tutors'),
 
         ],
         'APP_DIRS': True,
@@ -97,35 +109,31 @@ WSGI_APPLICATION = 'Masomo.wsgi.application'
 
 # Database
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # development
-if config('MODE')=="dev":
-    DATABASES = {
-        'default': {
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            # 'NAME': BASE_DIR / 'db.sqlite3',
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
-            'PORT': '',
-        }
+
+DATABASES = {
+    # read os.environ['DATABASE_URL']
+    'default': env.db()  # <-- Updated!
 }
+
+
 # production
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=config('DATABASE_URL')
+#         )
+#     }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
+
+CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
 
 
 # Password validation
@@ -193,8 +201,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
 
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-
-
 
 
 LOGOUT_REDIRECT_URL = 'home'
